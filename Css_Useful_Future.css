@@ -1,0 +1,242 @@
+/* Normal */
+.parent {
+  color: red;
+}
+.parent .child {
+  color: grey;
+}
+.parent .child span {
+  color: green;
+}
+
+/* With CSS Nesting Module */
+.parent {
+  color: red;
+  .child {
+    color: grey;
+    & span {
+      color: green;
+    }
+    &:hover span {
+      font-weight: bold;
+    }
+  }
+}
+/* ==================#-2 */
+.one {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
+  background-color: #eee;
+  writing-mode: vertical-lr;
+}
+.two {
+  /* border-block: 2px solid black; */
+  border-block-start: 2px solid black;
+  border-block-end: 2px solid black;
+  writing-mode: vertical-lr;
+}
+/* ==================#-3 */
+
+/* Normal Way */
+h1 a,
+h1 span,
+div a,
+div span,
+p a,
+p span {
+  color: red;
+}
+
+/* With Where */
+.parent :where(h1, div, p) :where(a, span) {
+  color: red;
+}
+/* ==================#-4 */
+
+.el {
+  background-color: #aaa;
+  width: 400px;
+  text-wrap: balance;
+}
+
+/* ==================#-5 */
+
+/* .parent:has(a, span) {
+  border: 2px solid red;
+} */
+.parent:has(a):has(span) {
+  border: 2px solid red;
+}
+.row:has(:checked) {
+  border: 2px solid green;
+}
+.parent:has(+ form) {
+  background-color: #ddd;
+}
+
+/* ==================#-6 */
+:nth-child(2 of .box) {
+  color: red;
+}
+/* ==================#-7 */
+/* With Grouping */
+div a,
+div span,
+p a,
+p span,
+ul a,
+ul span {
+  color: red;
+}
+
+/* With Is */
+:is(div, p, ul) :is(a, span) {
+  color: red;
+}
+
+/* Other Example */
+:is(div, p, ul, article, section) :is(a, span, .test) {
+  color: red;
+}
+/* ==================#-8 */
+a.decoration {
+  text-decoration-line: overline;
+  text-decoration-style: wavy;
+  text-decoration-color: green;
+  color: green;
+}
+span.decoration {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: black;
+  color: black;
+}
+/* ==================#-9 */
+
+.parent0 {
+  color: green;
+  border: 2px solid currentColor;
+  box-shadow: 2px 5px 10px currentColor;
+}
+.parent0 .child0 {
+  border: 2px dotted currentColor;
+  color: black;
+}
+
+/* ==================#-10 */
+.alert {
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: #eee;
+}
+p {
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: #eee;
+}
+:empty {
+  border: 1px solid red;
+}
+/* ==================#-11 */
+.cant-select {
+  user-select: none;
+}
+.all-select {
+  user-select: all;
+}
+/* ==================#-12 */
+
+.box {
+  box-sizing: border-box;
+  margin: 20px auto;
+  padding: 20px;
+  width: 400px;
+  background-color: #eee;
+  text-align: center;
+  border: 2px solid black;
+  outline: 2px solid green;
+  outline-offset: 2px;
+}
+/* ==================#-13 */
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 62px;
+}
+body {
+  margin: 0;
+}
+h3.all {
+  margin: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: black;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  height: 62px;
+}
+h3.all a {
+  color: white;
+}
+div.all {
+  height: 100vh;
+}
+.sec-1 {
+  padding-top: 62px;
+}
+.sec-2 {
+  background-color: #eee;
+}
+/* ==================#-14 */
+
+ul {
+  list-style: none;
+}
+ul li {
+  background-color: #eee;
+  padding: 10px;
+  border-bottom: 2px solid white;
+  display: flex;
+  align-items: center;
+}
+/* First Method */
+ul li::before {
+  content: "\2022";
+  color: red;
+  display: inline-flex;
+  margin-right: 10px;
+}
+
+/* Second Method */
+ul li::before {
+  content: "";
+  background-color: red;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-flex;
+  margin-right: 10px;
+}
+
+/* Marker Method */
+ul li::marker {
+  content: "@  ";
+  color: red;
+  animation: zoomin 1s ease infinite;
+}
+
+@keyframes zoomin {
+  0%,
+  100% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
